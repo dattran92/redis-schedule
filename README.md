@@ -13,9 +13,7 @@ planner.js
 const scheduler = require('redis-scheduler');
 scheduler.connect({ host: 'localhost', port: 6379' });
 
-scheduler.worker.register('someJob', (data) => {
-  console.log('got data from scheduler');
-});
+scheduler.schedule('someJob', 'uniq_key', Date.now());
 ```
 
 worker.js
